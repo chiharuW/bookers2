@@ -1,8 +1,30 @@
 <h1>User info</h1>
 
-<div>
-  <h3><%= @user.name %></h3>
-
+<div class="container">
+   <% if @user.profile_image.attached? %>
+    <%= image_tag @user.profile_image, size: "100x100" %>
+   <% else %>
+    <%= image_tag 'no_image', size: "100x100" %>
+   <% end %>
+ <table>
+   <th>
+     <tr class="fs-4 fw-bold ">
+       <td class="px-2">name</td>
+       <td class="pl-5"><%= @user.name %></td>
+     </tr>
+     <tr class="fs-4 fw-bold ">
+       <td class="px-2">introduction</td>
+       <td class="pl-5"><%= @user.introduction %></td>
+     </tr>
+   </th>
+ </table>
 </div>
 
-<p><%= link_to "プロフィール編集", edit_user_path %></p>
+<div class="d-grid gap-2">
+  <button type="button" class="btn btn-outline-dark">
+   <%= link_to edit_user_path do %>
+    <i class="fas fa-user-cog text-dark"></i>
+   <% end %>
+ </button>
+</div>
+
