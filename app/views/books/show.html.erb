@@ -1,5 +1,5 @@
 <main>
-<%= render 'list', book: @book %>
+<%= render 'list', book: @new_book %>
 
   <div class="col-md-7">
    <h2>Book detail</h2>
@@ -7,11 +7,12 @@
     <thead>
      <tr>
       <td>
-    <% if current_user.profile_image.attached? %>
-     <%= image_tag current_user.profile_image, size: "100x100" %>
+   <% if @book.user.profile_image.attached? %>
+     <%= image_tag @book.user.profile_image, size: "100x100" %>
     <% else %>
      <%= image_tag 'no_image', size: "100x100" %>
     <% end %>
+       <br><%= link_to @book.user.name,  user_path(@book.user_id) %>
       </td>
       <td>
        <span><%= link_to @book.title, book_path %></span>
@@ -21,10 +22,10 @@
       </td>
      <% if @book.user == current_user %>
       <td>
-       <%= link_to "Edit", edit_book_path(@book.id), class:"btn btn-primary" %>
+       <%= link_to "Edit", edit_book_path(@book.id), class:"btn btn-success" %>
       </td>
       <td>
-       <%= link_to "Destroy", book_path(@book.id), method: :delete, class:"btn btn-danger" %>
+       <%= link_to "Destroy", book_path(@book.id), method: :delete, class:"btn btn-danger", "data-confirm" => "本当に削除しますか" %>
       </td>
        <% end %>
      </tr>

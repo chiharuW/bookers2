@@ -37,7 +37,8 @@
       <br><%= f.text_area :body %>
      </div>
      <div class="form_group mt-3">
-      <input type="submit" name="commit" value="Create Book" class="btn btn-success" data-disable-with="Create Book">
+      <%= f.submit 'Create Book', class:"btn btn-success" %>
+      <!--<input type="submit" name="commit" value="Create Book" class="btn btn-success" data-disable-with="Create Book">-->
      </div>
     <% end %>
   </div>

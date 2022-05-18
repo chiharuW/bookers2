@@ -1,5 +1,5 @@
 <main>
-<%= render 'list', book: @book %>
+<%= render 'list', book: @new_book %>
 
  <div class="col-md-7">
   <h2 class="mt-3">Books</h2>
@@ -13,8 +13,8 @@
      <% @books.each do |book| %>
     <tr>
      <td>
-    <% if current_user.profile_image.attached? %>
-     <%= image_tag current_user.profile_image, size: "100x100" %>
+    <% if book.user.profile_image.attached? %>
+     <%= image_tag book.user.profile_image, size: "100x100" %>
     <% else %>
      <%= image_tag 'no_image', size: "100x100" %>
     <% end %>
@@ -33,7 +33,6 @@
      <% end %>
   </table>
   </div>
- </div>
 </main>
 
 

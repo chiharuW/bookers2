@@ -28,7 +28,7 @@
          <% end %>
         </li>
         <li>
-         <%= link_to user_path(current_user.id), class: 'nav-link text-light p-2' do %>
+         <%= link_to users_path, class: 'nav-link text-light p-2' do %>
           <i class="fas fa-users"></i>Users
          <% end %>
          </li>
@@ -81,6 +81,7 @@
    <main>
     <div class="container">
     <div class="row">
+    <%= render 'layouts/notification' %>
     <%= yield %>
     </div>
     </div>
