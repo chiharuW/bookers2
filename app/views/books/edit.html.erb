@@ -1,12 +1,10 @@
-<main>
  <p id="notice p-2"></p>
 
- <div class="container">
-  <div class="row">
-   <div class="col-md-3">
-    
+
+   <div class="col-md-8">
+
    <h1>Editing Book</h1>
-   
+
    <% if @book.errors.any? %>
     <%= @book.errors.count %>errors prohibited this obj from being saved:
      <ul>
@@ -15,7 +13,7 @@
        <% end %>
      </ul>
    <% end %>
-   
+
     <%= form_with model: @book do |f| %>
      <div class="form_group mt-3">
       <label for="inputName">Title</label>
@@ -34,6 +32,3 @@
         <%= link_to "Back", book_path %>
      </div>
    </div>
-  </div>
- </div>
-</main>

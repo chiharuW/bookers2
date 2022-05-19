@@ -5,7 +5,7 @@ Rails.application.routes.draw do
  #homesコントローラ topページ
   root to: "homes#top"
 
-  get 'homes/about'=> "homes#about", as: "about"
+  get 'home/about'=> "homes#about", as: "about"
 
   resources :books, only: [:show, :edit, :index, :update, :create, :destroy, :new]
 
