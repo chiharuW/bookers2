@@ -1,8 +1,6 @@
- <p id="notice"></p>
+<%= render 'list2', user: @user %>
 
- <%= render 'list', book: @new_book %>
-
-  <div class="col-md-8">
+  <div class="col-md-8 offset-md-1">
    <h2>Book detail</h2>
     <table class="table table-hover table-inverse">
     <thead>
@@ -33,6 +31,3 @@
      </thead>
      </table>
   </div>
-  </div>
-  </div>
-</main>
