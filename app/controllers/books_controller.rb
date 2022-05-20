@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
 
- before_action :ensure_correct_user, only:[:edit]
+ before_action :ensure_correct_user, only:[:edit, :update]
 
   def new
     @book = Book.new
@@ -25,6 +25,7 @@ class BooksController < ApplicationController
     @book = Book.new
     @books = Book.all
     @new_book = Book.new
+    
   end
 
   def create
@@ -66,3 +67,4 @@ private
     redirect_to(books_path) unless @user == current_user
   end
 end
+

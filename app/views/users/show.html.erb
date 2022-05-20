@@ -1,4 +1,45 @@
-<%= render 'books/list2', user: @user %>
+<!--<= render 'books/list2', user: @user %>-->
+
+
+<p id="notice"></p>
+
+<div class="container px-5">
+ <div class="row">
+  <div class="col-md-3">
+   <h2>User info</h2>
+     <%= image_tag @user.get_profile_image, size: "100x100" %>
+    <table class="table">
+     <tr>
+      <th class="px-2">name</th>
+      <th class="pl-5"><%= @user.name %></th>
+     </tr>
+      <tr>
+       <th class="px-2">introduction</th>
+       <th class="pl-5"><%= @user.introduction %></th>
+      </tr>
+    </table>
+
+    <div class="form_group mt-3">
+     <%= link_to edit_user_path(@user.id), class: 'btn btn-outline-secondary btn-block' do %>
+      <i class="fas fa-user-cog"></i>
+     <% end %>
+    </div>
+
+   <h2 class="mt-3">New book</h2>
+    <%= form_with model:  @new_book do |f| %>
+     <div class="form_group mt-3">
+      <label for="books_title">Title</label>
+      <br><%= f.text_field :title, autofocus: true, id:"inputName" %>
+     </div>
+     <div class="form_group mt-3">
+      <label for="books_body">Opinion</label>
+      <br><%= f.text_area :body %>
+     </div>
+     <div class="form_group mt-3">
+      <%= f.submit 'Create Book', class:"btn btn-success" %>
+     </div>
+    <% end %>
+  </div>
 
   <div class="col-md-8 offset-md-1">
    <h2>Books</h2>
@@ -7,11 +48,7 @@
       <% @books.each do |book| %>
       <tr>
       <td>
-      <% if book.user.profile_image.attached? %>
-       <%= image_tag book.user.profile_image, size: "100x100" %>
-      <% else %>
-       <%= image_tag 'no_image', size: "100x100" %>
-      <% end %>
+      <%= link_to image_tag(book.user.get_profile_image, size: "100x100"), user_path(book.user_id) %>
       </td>
       <td>
        <%= link_to book.title, book_path(book.id) %>
